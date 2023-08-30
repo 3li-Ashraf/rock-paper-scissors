@@ -1,5 +1,4 @@
-// This function generates a random choice for the computer
-function getComputerChoice() {
+function getComputerSelection() {
     let dice = 0;
     while (dice === 0) {
         dice = Math.floor(Math.random() * 10);
@@ -15,17 +14,15 @@ function getComputerChoice() {
     return "scissors";
 }
 
-// This function gets player choice
-function getPlayerChoice() {
-    let choice = prompt("Choose: Rock Paper Scissors",'');
-    while (typeof choice !== "string") {
-        choice = prompt("ERROR!! Rock Paper Scissors",'');
+function getPlayerSelection() {
+    let playerSelection = prompt("Choose: Rock / Paper / Scissors",'');
+    while (typeof playerSelection !== "string") {
+        playerSelection = prompt("ERROR!! Choose: Rock / Paper / Scissors",'');
     }
 
-    // Make choice case-insensitive
-    choice = choice.toLowerCase();
+    playerSelection = playerSelection.toLowerCase();
 
-    switch (choice) {
+    switch (playerSelection) {
         case "rock":
             return "rock";
         case "paper":
@@ -38,39 +35,38 @@ function getPlayerChoice() {
     }
 }
 
-// This function decides who is the winner
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "This round is draw!";
     }
-    else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
+    else if (playerSelection === "rock" && computerSelection === "scissors"
+    || playerSelection === "paper" && computerSelection === "rock"
+    || playerSelection === "scissors" && computerSelection === "paper") {
         return `Player wins this round! ${playerSelection} beats ${computerSelection}`;
     }
+    
     return `Computer wins this round! ${computerSelection} beats ${playerSelection}`;
 }
 
-// This function generates a game of 5 rounds and announce the winner
 function game() {
     let playerScore = 0;
     let computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        let result = playRound(playerSelection,computerSelection);
+        let playerSelection = getPlayerSelection();
+        let computerSelection = getComputerSelection();
+        let roundWinner = playRound(playerSelection,computerSelection);
 
-        // Announce round winner
-        console.log(result);
+        console.log(roundWinner);
 
-        if (result.charAt(0) === 'P') {
+        if (roundWinner.charAt(0) === 'P') {
             playerScore++;
         }
-        else if (result.charAt(0) === 'C') {
+        else if (roundWinner.charAt(0) === 'C') {
             computerScore++;
         }
     }
 
-    // Announce game winner
     if (playerScore === computerScore) {
         console.log("The game is draw!");
     }
@@ -82,5 +78,4 @@ function game() {
     }
 }
 
-// Start the game
 game();
