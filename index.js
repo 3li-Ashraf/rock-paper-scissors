@@ -15,24 +15,13 @@ function getComputerSelection() {
 }
 
 function getPlayerSelection() {
-    let playerSelection = prompt("Choose: Rock / Paper / Scissors",'');
-    while (typeof playerSelection !== "string") {
-        playerSelection = prompt("ERROR!! Choose: Rock / Paper / Scissors",'');
+    let playerSelection = prompt("Choose: Rock / Paper / Scissors",'').toLowerCase();
+
+    while (playerSelection !=="rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+        playerSelection = prompt("Invalid input!! Choose: Rock / Paper / Scissors",'').toLowerCase();
     }
 
-    playerSelection = playerSelection.toLowerCase();
-
-    switch (playerSelection) {
-        case "rock":
-            return "rock";
-        case "paper":
-            return "paper";
-        case "scissors":
-            return "scissors";
-        default:
-            console.log("Invalid choice. Player choice will be rock.");
-            return "rock";
-    }
+    return playerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -40,19 +29,19 @@ function playRound(playerSelection, computerSelection) {
         return "This round is draw!";
     }
     else if (playerSelection === "rock" && computerSelection === "scissors"
-    || playerSelection === "paper" && computerSelection === "rock"
-    || playerSelection === "scissors" && computerSelection === "paper") {
+             || playerSelection === "paper" && computerSelection === "rock"
+             || playerSelection === "scissors" && computerSelection === "paper") {
         return `Player wins this round! ${playerSelection} beats ${computerSelection}`;
     }
     
     return `Computer wins this round! ${computerSelection} beats ${playerSelection}`;
 }
 
-function game() {
+function game(rounds) {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < rounds; i++) {
         let playerSelection = getPlayerSelection();
         let computerSelection = getComputerSelection();
         let roundWinner = playRound(playerSelection,computerSelection);
@@ -65,17 +54,13 @@ function game() {
         else if (roundWinner.charAt(0) === 'C') {
             computerScore++;
         }
+
+        if (playerScore > (rounds-i) || computerScore > (rounds-i)) break;
     }
 
-    if (playerScore === computerScore) {
-        console.log("The game is draw!");
-    }
-    else if (playerScore > computerScore) {
-        console.log("The final winner is: Player!");
-    }
-    else {
-        console.log("The final winner is: Computer!");
-    }
+    (playerScore === computerScore) ? console.log("The game is draw!") :
+    (playerScore > computerScore) ? console.log("The final winner is: Player!") :
+    console.log("The final winner is: Computer!");
 }
 
-game();
+game(5);
