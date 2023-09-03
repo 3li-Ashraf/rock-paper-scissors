@@ -3,7 +3,8 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -15,36 +16,39 @@ body {
 }
 
 .header {
-    padding: 40px 0;
-    color: #fac650;
+    padding: 36px 0;
     text-align: center;
     background-color: #111720;
 }
 
 .title {
+    color: #fac650;
     font-size: 36px;
     font-family: 'Press Start 2P', cursive;
 }
 
 .main {
     flex: 1;
-    padding-top: 40px;
-    font-size: 25px;
     color: #dddddd;
+    padding-top: 22px;
     text-align: center;
 }
 
-.round-details {
-    margin-top: 10px;
-    font-size: 20px;
+.round-result {
+    font-size: 24px;
 }
 
-.round-choices-board {
-    margin: 80px 0 80px;
+.round-details {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.scoreboard {
     list-style: none;
+    padding: 50px 0;
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 110px;
 }
 
 .round-choice {
@@ -52,24 +56,24 @@ body {
 }
 
 .score {
-    margin-top: 40px;
-    font-weight: bold;
+    margin-top: 36px;
+    font-size: 20px;
 }
 
-.input-choices-box {
+.choice-buttons {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 48px;
 }
 
-.input-button {
-    font-size: 80px;
-    background-color: #393e46;
-    border: none;
-    border-radius: 12px;
+.choice-button {
     width: 160px;
     height: 160px;
+    border: none;
+    border-radius: 10px;
+    font-size: 80px;
+    background-color: #393e46;
     transition: all .1s ease;
 }
 
@@ -80,35 +84,39 @@ body {
 }  
 
 .footer {
-    padding: 15px 0;
+    padding: 10px 0;
     color: #dddddd;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .modal {
     margin: auto;
+    border: none;
     color: #dddddd;
     background-color: #222831;
-    border: none;
     border-radius: 10px;
     text-align: center;
-    width: 300px;
-    height: 200px;
+    width: 240px;
+    height: 140px;
     padding: 30px;
 }
 
 .modal::backdrop {
     background-color: black;
     opacity: 0.6;
+}
+
+.modal-title {
     font-size: 40px;
+    margin-bottom: 36px;
 }
 
 .play-again-button {
-    background-color: #393e46;
-    color: #dddddd;
     border: none;
+    color: #dddddd;
+    background-color: #393e46;
+    font-size: 30px;
     border-radius: 10px;
     padding: 10px 20px;
-    font-size: 30px;
 }

@@ -4,43 +4,41 @@ const playerChoiceOutput = document.querySelector("#playerChoice");
 const playerScoreOutput = document.querySelector("#playerScore");
 const computerChoiceOutput = document.querySelector("#computerChoice");
 const computerScoreOutput = document.querySelector("#computerScore");
-const buttons = document.querySelectorAll(".input-button");
+const choiceButtons = document.querySelectorAll(".choice-button");
 const modal = document.querySelector(".modal");
 const modalTitle = document.querySelector(".modal-title");
 const playAgainButton = document.querySelector(".play-again-button");
 let playerScore = 0;
 let computerScore = 0;
 
-buttons.forEach(button => {
+choiceButtons.forEach(button => {
     button.addEventListener("click", play);
 });
 
 function play() {
     const playerChoice = this.getAttribute("id");
     const computerChoice = getRandomChoice();
-    playerChoiceOutput.textContent = this.innerText;
+    playerChoiceOutput.textContent = toSymbol(playerChoice);
     computerChoiceOutput.textContent = toSymbol(computerChoice);
 
     if (playerChoice === computerChoice) {
-        roundResultOutput.innerText = "It's a tie!";
-        roundDetailsOutput.innerText = `${playerChoice} ties with ${computerChoice}`;
+        roundResultOutput.textContent = "It's a tie!";
+        roundDetailsOutput.textContent = `${playerChoice} ties with ${computerChoice}`;
     }
     else if (playerChoice === "rock" && computerChoice === "scissors"
              || playerChoice === "paper" && computerChoice === "rock"
              || playerChoice === "scissors" && computerChoice === "paper") {
-        roundResultOutput.innerText = "You won!";
-        roundDetailsOutput.innerText = `${playerChoice} beats ${computerChoice}`;
-        playerScoreOutput.innerText = ++playerScore;
+        roundResultOutput.textContent = "You won!";
+        roundDetailsOutput.textContent = `${playerChoice} beats ${computerChoice}`;
+        playerScoreOutput.textContent = ++playerScore;
     }
     else{
-        roundResultOutput.innerText = "You lost!";
-        roundDetailsOutput.innerText = `${playerChoice} is beaten by ${computerChoice}`;
-        computerScoreOutput.innerText = ++computerScore;
+        roundResultOutput.textContent = "You lost!";
+        roundDetailsOutput.textContent = `${playerChoice} is beaten by ${computerChoice}`;
+        computerScoreOutput.textContent = ++computerScore;
     }
 
-    if(playerScore === 5 || computerScore === 5){
-        isOver();
-    }
+    if(playerScore === 5 || computerScore === 5) gameOver();
 }
 
 function getRandomChoice() {
@@ -67,7 +65,7 @@ function toSymbol(choice) {
     }
 }
 
-function isOver() {
+function gameOver() {
     
     if (playerScore === 5) {
         modalTitle.textContent = "You won!";
@@ -77,9 +75,10 @@ function isOver() {
     }
 
     modal.showModal();
+    reset();
 }
 
-playAgainButton.addEventListener("click", reset);
+playAgainButton.addEventListener("click", () => modal.close());
 
 function reset() {
     playerScore = 0;
@@ -88,20 +87,19 @@ function reset() {
     roundDetailsOutput.textContent = "First to score 5 points wins the game";
     playerChoiceOutput.textContent = '❔';
     playerScoreOutput.textContent = 0;
-    computerScoreOutput.textContent = 0; 
     computerChoiceOutput.textContent = '❔';
-    modal.close();
+    computerScoreOutput.textContent = 0; 
 }
 
-// Button press effect
-buttons.forEach(button => {
+// Button pressed effect
+choiceButtons.forEach(button => {
     button.addEventListener("click", () => button.classList.add("pressed"));
 });
 
-buttons.forEach(button => {
-    button.addEventListener("transitionend", event => event.target.classList.remove("pressed"));
+choiceButtons.forEach(button => {
+    button.addEventListener("transitionend", () => button.classList.remove("pressed"));
 });
 
 // Date in footer
 const currentYear = document.querySelector("#currentYear");
-currentYear.innerText = new Date().getFullYear();
+currentYear.textContent = new Date().getFullYear();

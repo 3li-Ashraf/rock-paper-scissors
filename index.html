@@ -30,37 +30,37 @@
         <div class="main">
             <!-- Round Info -->
             <h2 class="round-result">Select your choice</h2>
-            <h3 class="round-details">First to score 5 points wins the game</h3>
-            <ul class="round-choices-board">
-                <li class="choice-score-box">
+            <p class="round-details">First to score 5 points wins the game</p>
+            <ul class="scoreboard">
+                <li class="player-info">
                     <p class="round-choice" id="playerChoice">❔</p>
                     <p class="score">Player: <span id="playerScore">0</span></p>
                 </li>
-                <li class="choice-score-box">
+                <li class="computer-info">
                     <p class="round-choice" id="computerChoice">❔</p>
                     <p class="score">Computer: <span id="computerScore">0</span></p>
                 </li>
             </ul>
             <!-- Input Choices -->
-            <ul class="input-choices-box">
+            <ul class="choice-buttons">
                 <li>
-                    <button class="input-button" id="rock">✊</button>
+                    <button class="choice-button" id="rock">✊</button>
                 </li>
                 <li>
-                    <button class="input-button" id="paper">✋</button>
+                    <button class="choice-button" id="paper">✋</button>
                 </li>
                 <li>
-                    <button class="input-button" id="scissors">✌️</button>
+                    <button class="choice-button" id="scissors">✌️</button>
                 </li>
             </ul>
         </div>
         <!-- Footer -->
         <div class="footer">
-            <p>Copyright &copy; <span id="currentYear"></span> by <strong>Ali Ashraf</strong></p>
+            <p>Copyright &copy; <span id="currentYear"></span> by Ali Ashraf</p>
         </div>
         <!-- Modal -->
         <dialog class="modal">
-            <h2 class="modal-title">You won!</h2>
+            <h2 class="modal-title"></h2>
             <button class="play-again-button">Play again</button>
         </dialog>
     </body>
