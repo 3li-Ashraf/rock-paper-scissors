@@ -80,7 +80,6 @@ function gameOver() {
 playAgainButton.addEventListener("click", () => modal.close());
 
 modal.addEventListener("close", reset);
-modal.addEventListener("cancel", reset);
 
 function reset() {
     playerScore = 0;
