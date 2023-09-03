@@ -75,10 +75,14 @@ function gameOver() {
     }
 
     modal.showModal();
-    reset();
 }
 
-playAgainButton.addEventListener("click", () => modal.close());
+playAgainButton.addEventListener("click", () => {
+    modal.close();
+});
+
+modal.addEventListener("cancel", reset);
+modal.addEventListener("close", reset);
 
 function reset() {
     playerScore = 0;
