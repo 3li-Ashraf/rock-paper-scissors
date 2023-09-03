@@ -1,4 +1,49 @@
-function getComputerSelection() {
+const roundResultOutput = document.querySelector(".round-result");
+const roundDetailsOutput = document.querySelector(".round-details");
+const playerChoiceOutput = document.querySelector("#playerChoice");
+const playerScoreOutput = document.querySelector("#playerScore");
+const computerChoiceOutput = document.querySelector("#computerChoice");
+const computerScoreOutput = document.querySelector("#computerScore");
+const buttons = document.querySelectorAll(".input-button");
+const modal = document.querySelector(".modal");
+const modalTitle = document.querySelector(".modal-title");
+const playAgainButton = document.querySelector(".play-again-button");
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach(button => {
+    button.addEventListener("click", play);
+});
+
+function play() {
+    const playerChoice = this.getAttribute("id");
+    const computerChoice = getRandomChoice();
+    playerChoiceOutput.textContent = this.innerText;
+    computerChoiceOutput.textContent = toSymbol(computerChoice);
+
+    if (playerChoice === computerChoice) {
+        roundResultOutput.innerText = "It's a tie!";
+        roundDetailsOutput.innerText = `${playerChoice} ties with ${computerChoice}`;
+    }
+    else if (playerChoice === "rock" && computerChoice === "scissors"
+             || playerChoice === "paper" && computerChoice === "rock"
+             || playerChoice === "scissors" && computerChoice === "paper") {
+        roundResultOutput.innerText = "You won!";
+        roundDetailsOutput.innerText = `${playerChoice} beats ${computerChoice}`;
+        playerScoreOutput.innerText = ++playerScore;
+    }
+    else{
+        roundResultOutput.innerText = "You lost!";
+        roundDetailsOutput.innerText = `${playerChoice} is beaten by ${computerChoice}`;
+        computerScoreOutput.innerText = ++computerScore;
+    }
+
+    if(playerScore === 5 || computerScore === 5){
+        isOver();
+    }
+}
+
+function getRandomChoice() {
     let dice = 0;
     while (dice === 0) {
         dice = Math.floor(Math.random() * 10);
@@ -14,53 +59,49 @@ function getComputerSelection() {
     return "scissors";
 }
 
-function getPlayerSelection() {
-    let playerSelection = prompt("Choose: Rock / Paper / Scissors",'').toLowerCase();
-
-    while (playerSelection !=="rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
-        playerSelection = prompt("Invalid input!! Choose: Rock / Paper / Scissors",'').toLowerCase();
+function toSymbol(choice) {
+    switch (choice) {
+        case "rock": return '✊';
+        case "paper": return '✋';
+        case "scissors": return '✌️';
     }
-
-    return playerSelection;
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return "This round is draw!";
-    }
-    else if (playerSelection === "rock" && computerSelection === "scissors"
-             || playerSelection === "paper" && computerSelection === "rock"
-             || playerSelection === "scissors" && computerSelection === "paper") {
-        return `Player wins this round! ${playerSelection} beats ${computerSelection}`;
-    }
+function isOver() {
     
-    return `Computer wins this round! ${computerSelection} beats ${playerSelection}`;
-}
-
-function game(rounds) {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < rounds; i++) {
-        let playerSelection = getPlayerSelection();
-        let computerSelection = getComputerSelection();
-        let roundWinner = playRound(playerSelection,computerSelection);
-
-        console.log(roundWinner);
-
-        if (roundWinner.charAt(0) === 'P') {
-            playerScore++;
-        }
-        else if (roundWinner.charAt(0) === 'C') {
-            computerScore++;
-        }
-
-        if (playerScore > (rounds-i) || computerScore > (rounds-i)) break;
+    if (playerScore === 5) {
+        modalTitle.textContent = "You won!";
+    }
+    else {
+        modalTitle.textContent = "You lost...";
     }
 
-    (playerScore === computerScore) ? console.log("The game is draw!") :
-    (playerScore > computerScore) ? console.log("The final winner is: Player!") :
-    console.log("The final winner is: Computer!");
+    modal.showModal();
 }
 
-game(5);
+playAgainButton.addEventListener("click", reset);
+
+function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    roundResultOutput.textContent = "Select your choice";
+    roundDetailsOutput.textContent = "First to score 5 points wins the game";
+    playerChoiceOutput.textContent = '❔';
+    playerScoreOutput.textContent = 0;
+    computerScoreOutput.textContent = 0; 
+    computerChoiceOutput.textContent = '❔';
+    modal.close();
+}
+
+// Button press effect
+buttons.forEach(button => {
+    button.addEventListener("click", () => button.classList.add("pressed"));
+});
+
+buttons.forEach(button => {
+    button.addEventListener("transitionend", event => event.target.classList.remove("pressed"));
+});
+
+// Date in footer
+const currentYear = document.querySelector("#currentYear");
+currentYear.innerText = new Date().getFullYear();

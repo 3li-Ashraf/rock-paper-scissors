@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #222831;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    padding: 40px 0;
+    color: #fac650;
+    text-align: center;
+    background-color: #111720;
+}
+
+.title {
+    font-size: 36px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.main {
+    flex: 1;
+    padding-top: 40px;
+    font-size: 25px;
+    color: #dddddd;
+    text-align: center;
+}
+
+.round-details {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.round-choices-board {
+    margin: 80px 0 80px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.round-choice {
+    font-size: 80px;
+}
+
+.score {
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+.input-choices-box {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.input-button {
+    font-size: 80px;
+    background-color: #393e46;
+    border: none;
+    border-radius: 12px;
+    width: 160px;
+    height: 160px;
+    transition: all .1s ease;
+}
+
+.pressed {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}  
+
+.footer {
+    padding: 15px 0;
+    color: #dddddd;
+    text-align: center;
+    font-size: 18px;
+}
+
+.modal {
+    margin: auto;
+    color: #dddddd;
+    background-color: #222831;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    padding: 30px;
+}
+
+.modal::backdrop {
+    background-color: black;
+    opacity: 0.6;
+    font-size: 40px;
+}
+
+.play-again-button {
+    background-color: #393e46;
+    color: #dddddd;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 30px;
+}

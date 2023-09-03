@@ -3,8 +3,65 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
-        <script src="index.js" defer></script>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+        <link rel="manifest" href="./favicon/site.webmanifest">
+        <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#ffc83d">
+        <link rel="shortcut icon" href="./favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-config" content="./favicon/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <!-- Linked files -->
+        <link rel="stylesheet" href="./index.css">
+        <script src="./index.js" defer></script>
     </head>
     <body>
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">ROCK PAPER SCISSORS</h1>
+        </div>
+        <!-- Main -->
+        <div class="main">
+            <!-- Round Info -->
+            <h2 class="round-result">Select your choice</h2>
+            <h3 class="round-details">First to score 5 points wins the game</h3>
+            <ul class="round-choices-board">
+                <li class="choice-score-box">
+                    <p class="round-choice" id="playerChoice">❔</p>
+                    <p class="score">Player: <span id="playerScore">0</span></p>
+                </li>
+                <li class="choice-score-box">
+                    <p class="round-choice" id="computerChoice">❔</p>
+                    <p class="score">Computer: <span id="computerScore">0</span></p>
+                </li>
+            </ul>
+            <!-- Input Choices -->
+            <ul class="input-choices-box">
+                <li>
+                    <button class="input-button" id="rock">✊</button>
+                </li>
+                <li>
+                    <button class="input-button" id="paper">✋</button>
+                </li>
+                <li>
+                    <button class="input-button" id="scissors">✌️</button>
+                </li>
+            </ul>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <p>Copyright &copy; <span id="currentYear"></span> by <strong>Ali Ashraf</strong></p>
+        </div>
+        <!-- Modal -->
+        <dialog class="modal">
+            <h2 class="modal-title">You won!</h2>
+            <button class="play-again-button">Play again</button>
+        </dialog>
     </body>
 </html>
