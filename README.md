@@ -1,1 +1,2 @@
-# odin-rock-paper-scissors
+# Rock Paper Scissors
+This is my first **HTML** / **CSS** / **JS** project.
