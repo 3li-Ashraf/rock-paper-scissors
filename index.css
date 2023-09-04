@@ -16,7 +16,7 @@ body {
 }
 
 .header {
-    padding: 36px 0;
+    padding: 48px 0;
     text-align: center;
     background-color: #111720;
 }
@@ -30,16 +30,16 @@ body {
 .main {
     flex: 1;
     color: #dddddd;
-    padding-top: 22px;
+    padding-top: 36px;
     text-align: center;
 }
 
 .round-result {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .round-details {
-    margin-top: 12px;
+    margin-top: 18px;
     font-size: 18px;
 }
 
