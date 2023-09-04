@@ -22,7 +22,7 @@ body {
 }
 
 .title {
-    font-size: 40px;
+    font-size: 36px;
     color: #fac650;
     font-family: 'Press Start 2P', cursive;
 }
@@ -30,16 +30,16 @@ body {
 .main {
     flex: 1;
     color: #dddddd;
-    padding-top: 36px;
+    padding-top: 30px;
     text-align: center;
 }
 
 .round-result {
-    font-size: 28px;
+    font-size: 36px;
 }
 
 .round-details {
-    font-size: 18px;
+    font-size: 22px;
     margin-top: 18px;
 }
 
@@ -87,7 +87,7 @@ body {
     padding: 10px 0;
     color: #dddddd;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .modal {
