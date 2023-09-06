@@ -44,17 +44,14 @@ function play() {
 function getRandomChoice() {
     let dice = 0;
     while (dice === 0) {
-        dice = Math.floor(Math.random() * 10);
+        dice = Math.floor(Math.random() * 4);
     }
 
-    // Consider [1,2,3] be rock / [4,5,6] be paper / [7,8,9] be scissors
-    if (dice <= 3) {
-        return "rock";
+    switch (dice) {
+        case 1: return "rock";
+        case 2: return "paper";
+        case 3: return "scissors";
     }
-    else if (dice <= 6) {
-        return "paper";
-    }
-    return "scissors";
 }
 
 function toSymbol(choice) {
