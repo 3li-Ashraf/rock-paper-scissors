@@ -32,7 +32,7 @@ function play() {
         roundDetailsOutput.textContent = `${playerChoice} beats ${computerChoice}`;
         playerScoreOutput.textContent = ++playerScore;
     }
-    else{
+    else {
         roundResultOutput.textContent = "You lost!";
         roundDetailsOutput.textContent = `${playerChoice} is beaten by ${computerChoice}`;
         computerScoreOutput.textContent = ++computerScore;
