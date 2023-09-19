@@ -68,7 +68,6 @@ function toSymbol(choice) {
 }
 
 function gameOver() {
-    
     if (playerScore === 5) {
         modalTitle.textContent = "You won!";
     }
