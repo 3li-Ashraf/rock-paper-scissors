@@ -1,3 +1,6 @@
+//---------------------------------------------------------------------------------------------------------------------
+// Declarations
+
 const roundResultOutput = document.querySelector(".round-result");
 const roundDetailsOutput = document.querySelector(".round-details");
 const playerChoiceOutput = document.querySelector("#playerChoice");
@@ -8,16 +11,17 @@ const choiceButtons = document.querySelectorAll(".choice-button");
 const modal = document.querySelector(".modal");
 const modalTitle = document.querySelector(".modal-title");
 const playAgainButton = document.querySelector(".play-again-button");
+
 let playerScore = 0;
 let computerScore = 0;
 
-choiceButtons.forEach(button => {
-    button.addEventListener("click", play);
-});
+//---------------------------------------------------------------------------------------------------------------------
+// Functions
 
 function play() {
     const playerChoice = this.getAttribute("id");
     const computerChoice = getRandomChoice();
+
     playerChoiceOutput.textContent = toSymbol(playerChoice);
     computerChoiceOutput.textContent = toSymbol(computerChoice);
 
@@ -38,11 +42,12 @@ function play() {
         computerScoreOutput.textContent = ++computerScore;
     }
 
-    if(playerScore === 5 || computerScore === 5) gameOver();
+    if (playerScore === 5 || computerScore === 5) gameOver();
 }
 
 function getRandomChoice() {
     let dice = 0;
+
     while (dice === 0) {
         dice = Math.floor(Math.random() * 4);
     }
@@ -74,30 +79,32 @@ function gameOver() {
     modal.showModal();
 }
 
-playAgainButton.addEventListener("click", () => modal.close());
-
-modal.addEventListener("close", reset);
-
 function reset() {
-    playerScore = 0;
-    computerScore = 0;
     roundResultOutput.textContent = "Select your choice";
     roundDetailsOutput.textContent = "First to score 5 points wins the game";
     playerChoiceOutput.textContent = '❔';
     playerScoreOutput.textContent = 0;
     computerChoiceOutput.textContent = '❔';
-    computerScoreOutput.textContent = 0; 
+    computerScoreOutput.textContent = 0;
+    playerScore = 0;
+    computerScore = 0;
 }
 
-// Button pressed effect
-choiceButtons.forEach(button => {
-    button.addEventListener("click", () => button.classList.add("pressed"));
-});
+//---------------------------------------------------------------------------------------------------------------------
+//Event listeners 
 
 choiceButtons.forEach(button => {
+    button.addEventListener("click", play);
+    button.addEventListener("click", () => button.classList.add("pressed"));
     button.addEventListener("transitionend", () => button.classList.remove("pressed"));
 });
 
+playAgainButton.addEventListener("click", () => modal.close());
+
+modal.addEventListener("close", reset);
+
+//---------------------------------------------------------------------------------------------------------------------
 // Date in footer
+
 const currentYear = document.querySelector("#currentYear");
 currentYear.textContent = new Date().getFullYear();
