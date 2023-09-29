@@ -46,16 +46,12 @@ function play() {
 }
 
 function getRandomChoice() {
-    let dice = 0;
-
-    while (dice === 0) {
-        dice = Math.floor(Math.random() * 4);
-    }
+    let dice = Math.floor(Math.random() * 3);
 
     switch (dice) {
-        case 1: return "rock";
-        case 2: return "paper";
-        case 3: return "scissors";
+        case 0: return "rock";
+        case 1: return "paper";
+        case 2: return "scissors";
     }
 }
 
