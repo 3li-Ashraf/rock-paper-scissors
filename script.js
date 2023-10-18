@@ -30,8 +30,8 @@ function play() {
         roundDetailsOutput.textContent = `${playerChoice} ties with ${computerChoice}`;
     }
     else if (playerChoice === "rock" && computerChoice === "scissors"
-             || playerChoice === "paper" && computerChoice === "rock"
-             || playerChoice === "scissors" && computerChoice === "paper") {
+        || playerChoice === "paper" && computerChoice === "rock"
+        || playerChoice === "scissors" && computerChoice === "paper") {
         roundResultOutput.textContent = "You won!";
         roundDetailsOutput.textContent = `${playerChoice} beats ${computerChoice}`;
         playerScoreOutput.textContent = ++playerScore;
